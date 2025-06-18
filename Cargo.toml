@@ -395,6 +395,7 @@ thread_local = { version = "1.1.8", default-features = false, optional = true }
 typetag = { version = "0.2.20", default-features = false }
 url = { version = "2.5.4", default-features = false, features = ["serde"] }
 warp = { version = "0.3.7", default-features = false }
+xxhash-rust = { version = "0.8.12", default-features = false, features = ["xxh3"], optional = true }
 zstd = { version = "0.13.0", default-features = false }
 arr_macro = { version = "0.2.1" }
 
@@ -684,6 +685,7 @@ transforms-logs = [
   "transforms-exclusive-route",
   "transforms-sample",
   "transforms-throttle",
+  "transforms-kubesense_log_pattern",
 ]
 transforms-metrics = [
   "transforms-aggregate",
@@ -711,6 +713,7 @@ transforms-exclusive-route = []
 transforms-sample = ["transforms-impl-sample"]
 transforms-tag_cardinality_limit = ["dep:bloomy", "dep:hashbrown"]
 transforms-throttle = ["dep:governor"]
+transforms-kubesense_log_pattern = ["dep:lru", "dep:xxhash-rust", "dep:base64"]
 
 # Implementations of transforms
 transforms-impl-sample = []

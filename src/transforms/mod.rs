@@ -31,6 +31,8 @@ pub mod tag_cardinality_limit;
 pub mod throttle;
 #[cfg(feature = "transforms-window")]
 pub mod window;
+#[cfg(feature = "transforms-kubesense_log_pattern")]
+pub mod kubesense_log_pattern;
 
 pub use vector_lib::transform::{
     FunctionTransform, OutputBuffer, SyncTransform, TaskTransform, Transform, TransformOutputs,
