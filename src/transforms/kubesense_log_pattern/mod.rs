@@ -119,6 +119,7 @@ impl KubesenseLogPattern {
             return Some(event);
         };
         let field_name = Some(field_name.to_string());
+        let output_field_name = format!("{}_pattern", field_name.expect("set field name!!"));
         let (group, _group_status) = self.parser.add_log_message(line.as_ref());
         let mut cluster = BTreeMap::new();
         cluster.insert(
@@ -134,7 +135,7 @@ impl KubesenseLogPattern {
             Value::Bytes(format!("{}", group).into()),
         );
         log.insert(
-            field_name.expect("set field name!!").as_str() ,
+            output_field_name.as_str(),
             Value::Object(cluster),
         );
         Some(event)
